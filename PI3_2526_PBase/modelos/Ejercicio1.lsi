@@ -1,0 +1,28 @@
+head section
+Integer getNumCandidatos()
+Integer getNumCualidades()
+Double getSueldoMin(Integer i)
+Integer getValoracion(Integer i)
+Integer getPresupuestoMax()
+Boolean getTieneCualidad(Integer i, Integer k)
+Boolean getSonIncompatibles(Integer i, Integer j)
+
+Integer n = getNumCandidatos()
+Integer m = getNumCualidades()
+Double B = getPresupuestoMax()
+
+goal section
+max sum(getValoracion(i) x[i], i in 0 .. n)
+
+constraints section
+sum(x[i], i in 0 .. n | getTieneCualidad(i,k)) >= 1,
+    k in 0 .. m
+
+x[i] + x[j] <= 1,
+    i in 0 .. n,
+    j in 0 .. n | getSonIncompatibles(i,j)
+	
+sum(getSueldoMin(i) x[i], i in 0 .. n) <= B
+
+bin
+x[i], i in 0 .. n

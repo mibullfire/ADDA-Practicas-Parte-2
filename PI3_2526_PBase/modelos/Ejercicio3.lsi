@@ -1,0 +1,30 @@
+head section
+Integer getNumElementos()
+Integer getNumContenedores()
+Boolean getNoPuedeUbicarse(Integer i, Integer j)
+Integer getTamContenedor(Integer j)
+Integer getTamElemento(Integer i)
+
+Integer n = getNumElementos()
+Integer m = getNumContenedores()
+
+goal section
+max sum(y[j],
+	j in 0 .. m)
+
+constraints section
+sum(x[i,j], 
+	j in 0 .. m) <= 1, 
+	i in 0 .. n
+	
+x[i,j] = 0, 
+	i in 0 .. n,
+	j in 0 .. m | getNoPuedeUbicarse(i,j)
+	
+sum(getTamElemento(i) x[i,j], 
+	i in 0 .. n) - getTamContenedor(j) y[j] = 0,
+	j in 0 .. m
+
+bin
+x[i,j], i in 0 .. n, j in 0 .. m
+y[j], j in 0 .. m
