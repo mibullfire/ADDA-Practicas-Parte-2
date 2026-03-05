@@ -59,6 +59,10 @@ public class Datos4 {
 	private static String inputFile;
 	private static Graph<Interseccion, Calle> grafo;
 	private static List<Interseccion> vertices;
+
+	public static Integer getNumVertices() {
+		return vertices.size();
+	}
 	
 	public static void iniDatos(String file) {
 		iniDatos(file, false);
@@ -87,13 +91,13 @@ public class Datos4 {
 	public static Double tiempo(Integer i, Integer j) {
 		Interseccion v1 = vertices.get(i);
 		Interseccion v2 = vertices.get(j);
-		return grafo.containsEdge(v1,v2)? grafo.getEdge(v1,v2).tiempo(): 1000.;
+		return grafo.containsEdge(v1,v2)? grafo.getEdge(v1,v2).tiempo(): 100000.;
 	}
 
 	public static Double esfuerzo(Integer i, Integer j) {
 		Interseccion v1 = vertices.get(i);
 		Interseccion v2 = vertices.get(j);
-		return grafo.containsEdge(v1,v2)? grafo.getEdge(v1,v2).esfuerzo(): 1000.;
+		return grafo.containsEdge(v1,v2)? grafo.getEdge(v1,v2).esfuerzo(): 100000.;
 	}
 	
 	public static Boolean sonMonumentos(Integer i, Integer j) {
